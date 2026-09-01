@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/basis-design-system-6e735089-66bd-42ad-8fac-d9fe651a4860/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/basis-design-system-6e735089-66bd-42ad-8fac-d9fe651a4860/tokens/palette.css">
+<link rel="stylesheet" href="_ds/basis-design-system-6e735089-66bd-42ad-8fac-d9fe651a4860/tokens/charts.css">
+<link rel="stylesheet" href="_ds/basis-design-system-6e735089-66bd-42ad-8fac-d9fe651a4860/tokens/typography.css">
+<link rel="stylesheet" href="_ds/basis-design-system-6e735089-66bd-42ad-8fac-d9fe651a4860/tokens/space.css">
+<link rel="stylesheet" href="_ds/basis-design-system-6e735089-66bd-42ad-8fac-d9fe651a4860/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/basis-design-system-6e735089-66bd-42ad-8fac-d9fe651a4860/tokens/motion.css">
+<link rel="stylesheet" href="_ds/basis-design-system-6e735089-66bd-42ad-8fac-d9fe651a4860/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/basis-design-system-6e735089-66bd-42ad-8fac-d9fe651a4860/tokens/base.css">
+<link rel="stylesheet" href="_ds/basis-design-system-6e735089-66bd-42ad-8fac-d9fe651a4860/styles.css">
+<script src="_ds/basis-design-system-6e735089-66bd-42ad-8fac-d9fe651a4860/_ds_bundle.js"></script>
+<style>
+body{margin:0;background:var(--surface-app);color:var(--text-primary);font-family:var(--font-sans)}
+a{color:var(--text-link);text-decoration:none}
+a:hover{color:var(--text-link-hover)}
+[role="tablist"]{scrollbar-width:none;-ms-overflow-style:none}
+[role="tablist"]::-webkit-scrollbar{display:none;width:0;height:0}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--surface-app);font-family:var(--font-sans);color:var(--text-primary)">
+
+<header style="height:44px;flex:none;display:flex;align-items:center;gap:14px;padding:0 16px;background:var(--surface-chrome);border-bottom:1px solid var(--border-default)">
+<span style="font:700 13px/1 var(--font-sans);letter-spacing:0.14em;text-transform:uppercase;color:var(--text-primary)">Basis</span>
+<span style="width:1px;height:18px;background:var(--border-default)"></span>
+<nav style="display:flex;align-items:center;gap:7px;font:400 12px/1 var(--font-sans);color:var(--text-secondary)">
+<a href="#" style="color:var(--text-secondary)">Portfolio</a><span style="color:var(--text-tertiary)">/</span>
+<a href="#" style="color:var(--text-secondary)">Northwind Industrials</a><span style="color:var(--text-tertiary)">/</span>
+<span style="color:var(--text-primary);font-weight:500">Import model</span>
+</nav>
+<div style="flex:1"></div>
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.Badge" tone="caution" size="sm" dot="{{ true }}" hint-size="80px,20px">Unsaved import</x-import>
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.IconButton" icon="settings-2" label="Import settings" size="sm" hint-size="24px,24px"></x-import>
+</header>
+
+<div style="flex:1;min-width:0;padding:20px 20px 96px;max-width:1600px;width:100%;box-sizing:border-box;margin:0 auto">
+
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:32px;margin-bottom:18px">
+<div style="min-width:0">
+<h1 style="margin:0 0 5px;font:600 26px/1.1 var(--font-sans);letter-spacing:var(--tracking-display);color:var(--text-primary)">Map line items</h1>
+<p style="margin:0;max-width:640px;font:400 13px/1.5 var(--font-sans);color:var(--text-secondary);text-wrap:pretty">Every uploaded line is matched to the internal model. Confirm the matches, override any of them, then save. Building drivers and projections happens later, in the model itself.</p>
+</div>
+<div style="flex:none;display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--surface-card);border:1px solid var(--border-default);border-radius:5px">
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.Icon" name="file-spreadsheet" size="16" color="var(--text-brand)" hint-size="16px,16px"></x-import>
+<div>
+<div style="font:500 12px/1.3 var(--font-sans);color:var(--text-primary)">{{ fileName }}</div>
+<div style="font:400 11px/1.3 var(--font-mono);color:var(--text-secondary);font-variant-numeric:tabular-nums">1.4 MB · 3 sheets · parsed 16:04 ET</div>
+</div>
+<span style="width:1px;height:24px;background:var(--border-subtle);margin:0 2px"></span>
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.Badge" tone="{{ parseBadgeTone }}" size="sm" icon="{{ parseBadgeIcon }}" hint-size="120px,20px">{{ parseBadgeText }}</x-import>
+</div>
+</div>
+
+<ol style="list-style:none;display:flex;align-items:center;gap:0;margin:0 0 18px;padding:0">
+<li style="display:flex;align-items:center;gap:8px">
+<span style="width:19px;height:19px;flex:none;border-radius:50%;background:var(--status-positive-bg);color:var(--status-positive-fg);display:flex;align-items:center;justify-content:center;font:600 10px/1 var(--font-mono)">1</span>
+<span style="font:500 12px/1 var(--font-sans);color:var(--text-secondary)">Select file</span>
+</li>
+<span style="width:36px;height:1px;background:var(--border-strong-c);margin:0 12px"></span>
+<li style="display:flex;align-items:center;gap:8px">
+<span style="width:19px;height:19px;flex:none;border-radius:50%;background:var(--status-positive-bg);color:var(--status-positive-fg);display:flex;align-items:center;justify-content:center;font:600 10px/1 var(--font-mono)">2</span>
+<span style="font:500 12px/1 var(--font-sans);color:var(--text-secondary)">Detect periods</span>
+</li>
+<span style="width:36px;height:1px;background:var(--border-strong-c);margin:0 12px"></span>
+<li style="display:flex;align-items:center;gap:8px">
+<span style="width:19px;height:19px;flex:none;border-radius:50%;background:var(--action-primary-bg);color:var(--action-primary-fg);display:flex;align-items:center;justify-content:center;font:600 10px/1 var(--font-mono)">3</span>
+<span style="font:600 12px/1 var(--font-sans);color:var(--text-primary)">Map line items</span>
+</li>
+<span style="width:36px;height:1px;background:var(--border-default);margin:0 12px"></span>
+<li style="display:flex;align-items:center;gap:8px;opacity:.55">
+<span style="width:19px;height:19px;flex:none;border-radius:50%;background:var(--surface-sunken);color:var(--text-secondary);display:flex;align-items:center;justify-content:center;font:600 10px/1 var(--font-mono)">4</span>
+<span style="font:500 12px/1 var(--font-sans);color:var(--text-secondary)">Save import</span>
+</li>
+</ol>
+
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px">
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.MetricCard" label="Periods detected" value="4" icon="calendar" footnote="FY2023 – LTM" hint-size="100%,74px"></x-import>
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.MetricCard" label="Lines parsed" value="87" icon="table-2" footnote="3 sheets" hint-size="100%,74px"></x-import>
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.MetricCard" label="Mapped to model" value="{{ mappedText }}" icon="git-merge" footnote="target lines" hint-size="100%,74px"></x-import>
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.MetricCard" label="Needs review" value="{{ reviewText }}" icon="alert-triangle" tone="{{ reviewTone }}" footnote="low confidence or unmapped" onDrill="{{ reviewDrill }}" drillLabel="Filter" hint-size="100%,74px"></x-import>
+</div>
+
+<sc-if value="{{ hasBlocker }}" hint-placeholder-val="{{ true }}">
+<div style="margin-bottom:12px">
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.Alert" tone="caution" compact="{{ true }}" title="{{ blockerTitle }}" actions="{{ blockerAction }}" hint-size="100%,36px"></x-import>
+</div>
+</sc-if>
+
+<div style="margin-bottom:10px">
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.Tabs" tabs="{{ tabs }}" value="{{ tab }}" onChange="{{ setTab }}" actions="{{ toolbarActions }}" size="sm" style="{{ tabsStyle }}" hint-size="100%,34px"></x-import>
+</div>
+
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.Card" padding="none" icon="git-merge" title="Line item mapping" subtitle="{{ matchingNote }}" footer="{{ tieoutText }}" hint-size="100%,560px">
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.DataTable" columns="{{ columns }}" rows="{{ rows }}" rowKey="id" dense="{{ dense }}" stickyHeader="{{ true }}" maxHeight="calc(100vh - 300px)" expandedKey="{{ expanded }}" onRowClick="{{ onRowClick }}" renderDetail="{{ renderDetail }}" hint-size="100%,520px"></x-import>
+</x-import>
+
+<p style="margin:12px 2px 0;font:400 11px/1.5 var(--font-sans);color:var(--text-tertiary);max-width:900px">Figures shown in USD millions as reported in the source file. Derived lines are calculated by the internal model and cannot be mapped directly. Sign conventions are applied on save.</p>
+
+</div>
+
+<footer style="position:sticky;bottom:0;flex:none;display:flex;align-items:center;justify-content:space-between;gap:24px;height:58px;padding:0 20px;background:var(--surface-chrome);border-top:1px solid var(--border-default);box-shadow:0 -1px 0 rgba(10,14,20,.03)">
+<div style="display:flex;align-items:center;gap:10px;min-width:0">
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.Icon" name="{{ statusIcon }}" size="14" color="{{ statusColor }}" hint-size="14px,14px"></x-import>
+<span style="font:400 12px/1.4 var(--font-sans);color:var(--text-secondary)">{{ statusText }}</span>
+</div>
+<div style="display:flex;align-items:center;gap:8px">
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.Button" onClick="{{ askCancel }}" hint-size="80px,28px">Cancel import</x-import>
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.Button" variant="primary" iconLeft="check" disabled="{{ saveDisabled }}" onClick="{{ onSave }}" hint-size="140px,28px">Save mapping</x-import>
+</div>
+</footer>
+
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.Dialog" open="{{ cancelOpen }}" onClose="{{ closeCancel }}" icon="alert-triangle" title="Discard this import?" subtitle="Northwind Industrials · unsaved mapping" footer="{{ cancelFooter }}" hint-size="0px,0px">
+<p style="margin:0 0 10px;font:400 13px/1.55 var(--font-sans);color:var(--text-body)">The parsed file and <strong style="font-weight:600">{{ editCountText }}</strong> will be discarded. The company keeps its last saved model, built 12 Jun 2026.</p>
+<p style="margin:0;font:400 12px/1.5 var(--font-sans);color:var(--text-secondary)">Nothing is written to the model until you save. This cannot be undone.</p>
+</x-import>
+
+<sc-if value="{{ toastOpen }}" hint-placeholder-val="{{ false }}">
+<x-import component-from-global-scope="BasisDesignSystem_6e7350.Toast" tone="positive" title="{{ toastTitle }}" onDismiss="{{ closeToast }}" action="{{ toastAction }}" hint-size="0px,0px">{{ toastBody }}</x-import>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;fileName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Northwind_FY25_Operating_Model.xlsx&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;parseMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;generic&quot;,&quot;template&quot;],&quot;default&quot;:&quot;generic&quot;,&quot;tsType&quot;:&quot;'generic' | 'template'&quot;,&quot;section&quot;:&quot;Import&quot;},&quot;showConfidence&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Display&quot;},&quot;dense&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Display&quot;}}">
+class Component extends DCLogic {
+  periods = ['FY2023', 'FY2024', 'FY2025', 'LTM Jun-26'];
+
+  src = [
+    { id: 's1', label: 'Product revenue', st: 'is', ref: 'IS!B12', v: [1842.0, 1980.4, 2144.7, 2201.3] },
+    { id: 's2', label: 'Service & maintenance revenue', st: 'is', ref: 'IS!B13', v: [318.6, 372.1, 431.8, 455.2] },
+    { id: 's3', label: 'Total net revenue', st: 'is', ref: 'IS!B14', v: [2160.6, 2352.5, 2576.5, 2656.5] },
+    { id: 's4', label: 'Cost of products sold', st: 'is', ref: 'IS!B16', v: [1231.4, 1318.9, 1425.2, 1462.0] },
+    { id: 's5', label: 'Cost of services', st: 'is', ref: 'IS!B17', v: [148.9, 171.4, 196.8, 205.6] },
+    { id: 's6', label: 'Gross margin', st: 'is', ref: 'IS!B18', v: [780.3, 862.2, 954.5, 988.9] },
+    { id: 's7', label: 'Selling, general & administrative', st: 'is', ref: 'IS!B20', v: [402.1, 428.6, 455.9, 468.2] },
+    { id: 's8', label: 'Research & development', st: 'is', ref: 'IS!B21', v: [131.5, 144.0, 158.7, 163.4] },
+    { id: 's9', label: 'Marketing & brand', st: 'is', ref: 'IS!B22', v: [88.4, 95.2, 101.3, 104.2] },
+    { id: 's10', label: 'Depreciation & amortisation', st: 'is', ref: 'IS!B23', v: [96.2, 101.7, 108.4, 111.2] },
+    { id: 's11', label: 'Operating income', st: 'is', ref: 'IS!B25', v: [62.1, 92.7, 130.2, 141.9] },
+    { id: 's12', label: 'Cash and cash equivalents', st: 'bs', ref: 'BS!C8', v: [214.8, 268.3, 311.5, 342.7] },
+    { id: 's13', label: 'Short-term investments', st: 'bs', ref: 'BS!C9', v: [60.0, 45.0, 80.0, 80.0] },
+    { id: 's14', label: 'Trade receivables, net', st: 'bs', ref: 'BS!C10', v: [388.2, 421.7, 468.9, 479.4] },
+    { id: 's15', label: 'Inventories', st: 'bs', ref: 'BS!C11', v: [301.4, 318.9, 352.6, 361.0] },
+    { id: 's16', label: 'Property, plant & equipment, net', st: 'bs', ref: 'BS!C14', v: [742.6, 788.1, 846.3, 861.5] },
+    { id: 's17', label: 'Trade payables', st: 'bs', ref: 'BS!C20', v: [255.9, 271.4, 299.8, 306.2] },
+    { id: 's18', label: 'Accrued liabilities', st: 'bs', ref: 'BS!C21', v: [118.3, 124.9, 138.2, 141.0] },
+    { id: 's19', label: 'Revolving credit facility', st: 'bs', ref: 'BS!C24', v: [120.0, 90.0, 60.0, 60.0] },
+    { id: 's20', label: 'Senior notes due 2029', st: 'bs', ref: 'BS!C25', v: [500.0, 500.0, 500.0, 500.0] },
+    { id: 's21', label: "Total shareholders' equity", st: 'bs', ref: 'BS!C31', v: [1102.4, 1189.6, 1318.9, 1372.4] },
+    { id: 's22', label: 'Interest expense, net', st: 'cf', ref: 'CF!D11', v: [38.4, 37.1, 35.2, 34.8] },
+    { id: 's23', label: 'Income tax expense', st: 'cf', ref: 'CF!D12', v: [12.6, 19.4, 28.7, 31.6] },
+    { id: 's24', label: 'Change in operating working capital', st: 'cf', ref: 'CF!D18', v: [-44.2, -38.6, -52.1, -49.4] },
+    { id: 's25', label: 'Purchases of property and equipment', st: 'cf', ref: 'CF!D24', v: [-118.4, -132.6, -147.9, -151.2] },
+    { id: 's26', label: 'Proceeds from asset sales', st: 'cf', ref: 'CF!D25', v: [4.2, 2.8, 6.1, 6.1] }
+  ];
+
+  model = [
+    { id: 'is', label: 'Income statement', rows: [
+      { id: 'revenue', label: 'Revenue', req: true },
+      { id: 'cogs', label: 'Cost of goods sold', req: true },
+      { id: 'gross_profit', label: 'Gross profit', derived: 'Revenue − Cost of goods sold' },
+      { id: 'opex', label: 'Operating expenses', req: true },
+      { id: 'ebitda', label: 'EBITDA', derived: 'Gross profit − Operating expenses' }
+    ] },
+    { id: 'bs', label: 'Balance sheet', rows: [
+      { id: 'cash', label: 'Cash & equivalents', req: true },
+      { id: 'ar', label: 'Accounts receivable', req: true },
+      { id: 'ppe', label: 'PP&E, net', req: true },
+      { id: 'ap', label: 'Accounts payable', req: true },
+      { id: 'debt', label: 'Total debt', req: true },
+      { id: 'equity', label: 'Total equity', req: true }
+    ] },
+    { id: 'cf', label: 'Cash flow statement', rows: [
+      { id: 'cf_ebitda', label: 'EBITDA', derived: 'Linked from income statement' },
+      { id: 'interest', label: 'Interest expense', req: true },
+      { id: 'taxes', label: 'Cash taxes', req: true },
+      { id: 'nwc', label: 'Change in net working capital', req: false },
+      { id: 'capex', label: 'Capital expenditures', req: true },
+      { id: 'fcf', label: 'Free cash flow', derived: 'EBITDA − Interest − Taxes + ΔNWC − Capex' }
+    ] }
+  ];
+
+  state = {
+    map: {
+      revenue: { lines: ['s1', 's2'], method: 'ai', conf: 0.92, note: 'Aggregate proposed by model: two revenue lines sum to reported “Total net revenue” in all four periods.' },
+      cogs: { lines: ['s4', 's5'], method: 'fuzzy', conf: 0.86, note: 'Token match on “Cost of…”, aggregated to one target. Excludes depreciation held in “Depreciation & amortisation”.' },
+      opex: { lines: ['s7', 's8', 's9'], method: 'ai', conf: 0.78, note: 'Model grouped three operating cost lines. D&A deliberately excluded so EBITDA stays pre-depreciation.' },
+      cash: { lines: ['s12'], method: 'alias', conf: 1.0, note: 'Alias dictionary: “Cash and cash equivalents” is a registered alias of Cash & equivalents.' },
+      ar: { lines: ['s14'], method: 'alias', conf: 0.97, note: 'Alias dictionary: “Trade receivables, net”.' },
+      ppe: { lines: ['s16'], method: 'alias', conf: 0.99, note: 'Alias dictionary: “Property, plant & equipment, net”.' },
+      ap: { lines: ['s17'], method: 'fuzzy', conf: 0.88, note: 'Fuzzy match, score 0.88. “Accrued liabilities” scored 0.61 and was left out.' },
+      debt: { lines: ['s19', 's20'], method: 'ai', conf: 0.90, note: 'Model aggregated drawn revolver and senior notes into total debt.' },
+      equity: { lines: ['s21'], method: 'alias', conf: 0.96, note: 'Alias dictionary: “Total shareholders’ equity”.' },
+      interest: { lines: ['s22'], method: 'alias', conf: 0.95, note: 'Alias dictionary: “Interest expense, net”.' },
+      taxes: { lines: [], method: 'none', conf: 0, note: 'No candidate above the 0.60 threshold on the cash flow sheet. Nearest: “Income tax expense” (0.58) — accrual, not cash.' },
+      nwc: { lines: ['s24'], method: 'fuzzy', conf: 0.71, note: 'Fuzzy match, score 0.71. Confirm the sign convention: source reports uses of cash as negative.' },
+      capex: { lines: ['s25'], method: 'alias', conf: 0.93, note: 'Alias dictionary: “Purchases of property and equipment”. Asset sale proceeds are excluded.' }
+    },
+    tab: 'all', search: '', onlyReview: false, expanded: null, cancelOpen: false, toastOpen: false, edits: 0
+  };
+
+  s(id) { return this.src.find((x) => x.id === id); }
+
+  fmt(n) {
+    if (n === null || n === undefined) return '—';
+    const a = Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    return (n < 0 ? '\u2212' : '') + a;
+  }
+
+  sumOf(lines) {
+    if (!lines || !lines.length) return null;
+    return this.periods.map((_, i) => lines.reduce((t, id) => t + (this.s(id) ? this.s(id).v[i] : 0), 0));
+  }
+
+  values() {
+    const m = this.state.map, out = {};
+    ['revenue', 'cogs', 'opex', 'cash', 'ar', 'ppe', 'ap', 'debt', 'equity', 'interest', 'taxes', 'nwc', 'capex'].forEach((k) => {
+      out[k] = this.sumOf(m[k] && m[k].lines);
+    });
+    const comb = (a, b, f) => (a && b ? a.map((x, i) => f(x, b[i])) : null);
+    out.gross_profit = comb(out.revenue, out.cogs, (a, b) => a - b);
+    out.ebitda = comb(out.gross_profit, out.opex, (a, b) => a - b);
+    out.cf_ebitda = out.ebitda;
+    if (out.ebitda && out.interest && out.taxes && out.capex) {
+      out.fcf = out.ebitda.map((e, i) => e - out.interest[i] - out.taxes[i] + (out.nwc ? out.nwc[i] : 0) + out.capex[i]);
+    } else out.fcf = null;
+    return out;
+  }
+
+  targetOf(id) {
+    for (const sec of this.model) { const r = sec.rows.find((x) => x.id === id); if (r) return { row: r, sec }; }
+    return null;
+  }
+
+  needsReview(id) {
+    const t = this.targetOf(id); if (!t || t.row.derived) return false;
+    const e = this.state.map[id];
+    if (!e || !e.lines.length) return !!t.row.req;
+    return e.method !== 'manual' && e.conf < 0.8;
+  }
+
+  setLines(id, lines) {
+    const prev = this.state.map[id];
+    const prevLabel = prev.lines.length ? prev.lines.map((l) => this.s(l).label).join(' + ') : 'nothing';
+    this.setState((s) => ({
+      edits: s.edits + 1,
+      map: Object.assign({}, s.map, { [id]: {
+        lines: lines, method: lines.length ? 'manual' : 'none', conf: lines.length ? 1 : 0,
+        note: lines.length
+          ? 'Set manually. Previous suggestion: ' + prevLabel + (prev.method !== 'manual' ? ' (' + prev.method + ')' : '') + '.'
+          : 'Cleared manually. Previous suggestion: ' + prevLabel + '.'
+      } })
+    }));
+  }
+
+  optionsFor(id) {
+    const t = this.targetOf(id); const st = t.sec.id;
+    const pool = this.src.filter((x) => x.st === st);
+    const cur = this.state.map[id].lines;
+    const opts = [{ value: '', label: '— Not mapped —' }];
+    if (cur.length > 1) opts.push({ value: cur.join('+'), label: cur.map((c) => this.s(c).label).join(' + ') + '  (' + cur.length + ' lines)' });
+    const presets = {
+      revenue: [['s1', 's2'], ['s3']], cogs: [['s4', 's5']], opex: [['s7', 's8', 's9'], ['s7', 's8', 's9', 's10']],
+      cash: [['s12', 's13']], debt: [['s19', 's20']]
+    };
+    (presets[id] || []).forEach((p) => {
+      const v = p.join('+');
+      if (p.length > 1 && !opts.some((o) => o.value === v)) opts.push({ value: v, label: p.map((c) => this.s(c).label).join(' + ') + '  (' + p.length + ' lines)' });
+    });
+    pool.forEach((x) => { if (!opts.some((o) => o.value === x.id)) opts.push({ value: x.id, label: x.label }); });
+    return opts;
+  }
+
+  matchCell(id) {
+    const N = window.BasisDesignSystem_6e7350; const t = this.targetOf(id); const e = this.state.map[id];
+    if (!t) return null;
+    if (t.row.derived || !e) {
+      return React.createElement('span', { style: { font: '400 11px/1 var(--font-sans)', color: 'var(--text-tertiary)' } }, 'Derived');
+    }
+    if (this.props.parseMode === 'template' && e.method !== 'manual' && e.lines.length) {
+      return React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '6px' } },
+        React.createElement(N.Badge, { tone: 'positive', size: 'sm', icon: 'file-check', subtle: true }, 'Template'),
+        React.createElement('span', { style: { font: '400 11px/1 var(--font-mono)', color: 'var(--text-tertiary)' } }, 'exact'));
+    }
+    const spec = {
+      alias: { tone: 'positive', icon: 'book-marked', label: 'Alias' },
+      fuzzy: { tone: 'neutral', icon: 'search', label: 'Fuzzy' },
+      ai: { tone: 'info', icon: 'sparkles', label: 'AI' },
+      manual: { tone: 'brand', icon: 'pencil', label: 'Manual' },
+      none: { tone: 'caution', icon: 'alert-triangle', label: 'Unmapped' }
+    }[e.method];
+    const low = e.method !== 'manual' && e.method !== 'none' && e.conf < 0.8;
+    const kids = [React.createElement(N.Badge, { key: 'b', tone: spec.tone, size: 'sm', icon: spec.icon, subtle: true }, spec.label)];
+    if (this.props.showConfidence !== false && e.method !== 'none' && e.method !== 'manual') {
+      kids.push(React.createElement('span', { key: 'c', style: { font: '400 11px/1 var(--font-mono)', fontVariantNumeric: 'tabular-nums', color: low ? 'var(--text-caution)' : 'var(--text-tertiary)' } }, e.conf.toFixed(2)));
+    }
+    return React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '6px' } }, kids);
+  }
+
+  sourceCell(id) {
+    const N = window.BasisDesignSystem_6e7350; const t = this.targetOf(id);
+    if (!t) return null;
+    if (t.row.derived) {
+      return React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-tertiary)', font: '400 12px/1 var(--font-sans)' } },
+        React.createElement(N.Icon, { name: 'function-square', size: 12 }),
+        React.createElement('span', null, 'Calculated · ' + t.row.derived));
+    }
+    const e = this.state.map[id];
+    const open = this.state.expanded === id;
+    const empty = !e.lines.length;
+    const summary = empty ? 'Not mapped' : e.lines.map((l) => this.s(l).label).join('  +  ');
+    return React.createElement('div', {
+      role: 'button', tabIndex: 0, title: 'Edit mapping',
+      onClick: (ev) => { ev.stopPropagation(); this.setState({ expanded: open ? null : id, pickerSearch: '' }); },
+      style: {
+        display: 'flex', alignItems: 'center', gap: '8px', maxWidth: '340px', height: '24px',
+        padding: '0 7px', boxSizing: 'border-box', cursor: 'pointer',
+        border: '1px solid ' + (empty ? 'var(--red-600)' : open ? 'var(--border-focus)' : 'transparent'),
+        borderRadius: 'var(--radius-md)',
+        background: open ? 'var(--surface-card)' : 'transparent',
+        transition: 'var(--transition-control)'
+      }
+    },
+      React.createElement('span', {
+        style: {
+          flex: '1 1 auto', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+          font: '400 12px/1.2 var(--font-sans)', color: empty ? 'var(--text-caution)' : 'var(--text-body)'
+        }
+      }, summary),
+      e.lines.length > 1 ? React.createElement('span', {
+        style: { flex: 'none', font: '500 10px/1 var(--font-mono)', padding: '2px 4px', borderRadius: '2px', background: 'var(--status-neutral-bg)', color: 'var(--status-neutral-fg)' }
+      }, e.lines.length + ' lines') : null,
+      React.createElement(N.Icon, { name: open ? 'chevron-up' : 'pencil', size: 11, color: 'var(--text-tertiary)', style: { flex: 'none' } }));
+  }
+
+  numCell(id, i) {
+    const t = this.targetOf(id); if (!t) return null;
+    const v = this.values()[id];
+    const n = v ? v[i] : null;
+    return React.createElement('span', {
+      style: {
+        font: (t.row.derived ? '500 ' : '400 ') + '12px/1 var(--font-mono)', fontVariantNumeric: 'tabular-nums',
+        color: n === null ? 'var(--text-disabled)' : t.row.derived ? 'var(--text-primary)' : 'var(--text-body)'
+      }
+    }, this.fmt(n));
+  }
+
+  labelCell(id) {
+    const N = window.BasisDesignSystem_6e7350; const t = this.targetOf(id);
+    if (!t) return null;
+    const review = this.needsReview(id);
+    return React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '7px', minWidth: 0 } },
+      review ? React.createElement('span', { key: 'd', title: 'Needs review', style: { width: '5px', height: '5px', flex: 'none', borderRadius: '50%', background: 'var(--text-caution)' } }) : React.createElement('span', { key: 'd', style: { width: '5px', flex: 'none' } }),
+      React.createElement('span', { key: 'l', style: { font: (t.row.derived ? '600 ' : '500 ') + '12.5px/1.2 var(--font-sans)', color: 'var(--text-primary)', whiteSpace: 'nowrap' } }, t.row.label),
+      t.row.derived ? React.createElement(N.Icon, { key: 'f', name: 'function-square', size: 11, color: 'var(--text-tertiary)' }) : null,
+      !t.row.derived && t.row.req === false ? React.createElement('span', { key: 'o', style: { font: '500 9.5px/1 var(--font-sans)', letterSpacing: 'var(--tracking-caps)', textTransform: 'uppercase', color: 'var(--text-tertiary)' } }, 'Optional') : null,
+      !t.row.derived && t.row.req && !this.state.map[id].lines.length ? React.createElement('span', { key: 'r', style: { font: '600 9.5px/1 var(--font-sans)', letterSpacing: 'var(--tracking-caps)', textTransform: 'uppercase', color: 'var(--text-caution)' } }, 'Required') : null);
+  }
+
+  detail(row) {
+    const N = window.BasisDesignSystem_6e7350; const id = row.id; const t = this.targetOf(id);
+    if (!t || t.row.derived) return null;
+    const e = this.state.map[id]; const st = t.sec.id;
+    const q = (this.state.pickerSearch || '').trim().toLowerCase();
+    const sheetName = { is: 'Income statement', bs: 'Balance sheet', cf: 'Cash flow' };
+    const pool = (q ? this.src : this.src.filter((x) => x.st === st))
+      .filter((x) => !q || x.label.toLowerCase().indexOf(q) > -1 || x.ref.toLowerCase().indexOf(q) > -1);
+    const label = (s) => React.createElement('div', { style: { font: '600 10px/1 var(--font-sans)', letterSpacing: 'var(--tracking-caps)', textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: '9px' } }, s);
+    const toggle = (x) => this.setLines(id, e.lines.indexOf(x.id) > -1 ? e.lines.filter((l) => l !== x.id) : e.lines.concat([x.id]));
+    const rowsList = pool.map((x) => React.createElement('div', { key: x.id, onClick: () => toggle(x), style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', padding: '3px 6px 3px 0', cursor: 'pointer', borderBottom: '1px solid var(--border-subtle)' } },
+      React.createElement(N.Checkbox, {
+        checked: e.lines.indexOf(x.id) > -1, label: x.label,
+        description: x.ref + (q && x.st !== st ? ' · ' + sheetName[x.st] : '')
+      }),
+      React.createElement('span', { style: { font: '400 11.5px/1 var(--font-mono)', fontVariantNumeric: 'tabular-nums', color: 'var(--text-secondary)' } }, this.fmt(x.v[3]))));
+    const list = [
+      React.createElement('div', { key: 'search', style: { display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' } },
+        React.createElement(N.Input, {
+          size: 'sm', iconLeft: 'search', placeholder: 'Search all 87 parsed lines', value: this.state.pickerSearch || '',
+          onChange: (ev) => this.setState({ pickerSearch: ev.target.value }), style: { width: '260px' }
+        }),
+        e.lines.length ? React.createElement(N.Button, { size: 'sm', variant: 'ghost', iconLeft: 'x', onClick: () => this.setLines(id, []) }, 'Clear') : null),
+      React.createElement('div', { key: 'list', style: { maxHeight: '198px', overflow: 'auto', paddingRight: '4px' } },
+        rowsList.length ? rowsList : React.createElement('p', { style: { margin: '8px 0', font: '400 12px/1.5 var(--font-sans)', color: 'var(--text-secondary)' } }, 'No parsed line matches “' + this.state.pickerSearch + '”. Clear the search to see the ' + sheetName[st].toLowerCase() + ' sheet.')),
+      e.lines.length > 1 ? React.createElement('div', { key: 'sum', style: { display: 'flex', justifyContent: 'space-between', gap: '12px', padding: '7px 0 0', font: '500 11.5px/1 var(--font-sans)', color: 'var(--text-primary)' } },
+        React.createElement('span', null, 'Aggregated total · ' + this.periods[3]),
+        React.createElement('span', { style: { font: '500 11.5px/1 var(--font-mono)', fontVariantNumeric: 'tabular-nums' } }, this.fmt(this.values()[id] ? this.values()[id][3] : null))) : null
+    ];
+    const provenance = [
+      ['Method', { alias: 'Alias dictionary', fuzzy: 'Fuzzy match', ai: 'AI proposal', manual: 'Manual override', none: 'No match' }[e.method]],
+      ['Confidence', e.method === 'none' ? '—' : e.conf.toFixed(2)],
+      ['Source cells', e.lines.length ? e.lines.map((l) => this.s(l).ref).join(', ') : '—'],
+      ['Aggregation', e.lines.length > 1 ? 'Sum of ' + e.lines.length + ' lines' : e.lines.length ? 'One-to-one' : '—']
+    ].map((p) => React.createElement('div', { key: p[0], style: { display: 'flex', justifyContent: 'space-between', gap: '12px', padding: '3px 0' } },
+      React.createElement('span', { style: { font: '400 11.5px/1.3 var(--font-sans)', color: 'var(--text-secondary)' } }, p[0]),
+      React.createElement('span', { style: { font: '400 11.5px/1.3 var(--font-mono)', color: 'var(--text-body)', textAlign: 'right' } }, p[1])));
+    return React.createElement('div', { style: { display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '28px', padding: '14px 18px 16px' } },
+      React.createElement('div', null, label('Map ' + t.row.label + ' from · ' + sheetName[st] + ' sheet'), list),
+      React.createElement('div', null, label('How this was matched'), provenance,
+        React.createElement('p', { style: { margin: '10px 0 0', font: '400 12.5px/1.5 var(--font-serif)', color: 'var(--text-body)' } }, e.note)));
+  }
+
+  tieouts() {
+    const v = this.values();
+    const checks = [
+      { label: 'Revenue vs reported “Total net revenue”', a: v.revenue, b: this.s('s3').v },
+      { label: 'Gross profit vs reported “Gross margin”', a: v.gross_profit, b: this.s('s6').v }
+    ];
+    const fails = checks.filter((c) => !c.a || Math.abs(c.a[3] - c.b[3]) > 0.05);
+    return { pass: checks.length - fails.length, total: checks.length, fails: fails };
+  }
+
+  renderVals() {
+    const N = window.BasisDesignSystem_6e7350;
+    const st = this.state; const vals = this.values();
+    if (!this.original) this.original = JSON.parse(JSON.stringify(st.map));
+    const template = this.props.parseMode === 'template';
+    const allTargets = this.model.reduce((a, s) => a.concat(s.rows.map((r) => r.id)), []);
+    const mappable = allTargets.filter((id) => !this.targetOf(id).row.derived);
+    const mappedCount = mappable.filter((id) => st.map[id].lines.length).length;
+    const reviewIds = mappable.filter((id) => this.needsReview(id));
+    const blockers = mappable.filter((id) => this.targetOf(id).row.req && !st.map[id].lines.length);
+    const q = st.search.trim().toLowerCase();
+
+    const passes = (r) => {
+      if (st.onlyReview && !this.needsReview(r.id)) return false;
+      if (q) {
+        const srcText = (st.map[r.id] ? st.map[r.id].lines : []).map((l) => this.s(l).label).join(' ');
+        if ((r.label + ' ' + srcText).toLowerCase().indexOf(q) === -1) return false;
+      }
+      return true;
+    };
+    const counts = {};
+    this.model.forEach((sec) => { counts[sec.id] = sec.rows.filter((r) => !r.derived && passes(r)).length; });
+    counts.all = this.model.reduce((a, sec) => a + counts[sec.id], 0);
+
+    const rows = [];
+    this.model.forEach((sec) => {
+      if (st.tab !== 'all' && st.tab !== sec.id) return;
+      const visible = sec.rows.filter(passes);
+      if (!visible.length) return;
+      rows.push({ __group: sec.label, id: 'g_' + sec.id });
+      visible.forEach((r) => rows.push({ id: r.id }));
+    });
+
+    const columns = [
+      { key: 'id', label: 'Target line', width: 250, render: (v) => this.labelCell(v) },
+      { key: 'src', label: 'Mapped from uploaded file', width: 370, render: (v, row) => this.sourceCell(row.id) },
+      { key: 'match', label: 'Match', width: 120, render: (v, row) => this.matchCell(row.id) },
+      { key: 'p0', label: this.periods[0], numeric: true, width: 96, render: (v, row) => this.numCell(row.id, 0) },
+      { key: 'p1', label: this.periods[1], numeric: true, width: 96, render: (v, row) => this.numCell(row.id, 1) },
+      { key: 'p2', label: this.periods[2], numeric: true, width: 96, render: (v, row) => this.numCell(row.id, 2) },
+      { key: 'p3', label: this.periods[3], numeric: true, width: 104, description: 'Trailing twelve months to 30 Jun 2026, derived from the source file’s quarterly columns.', render: (v, row) => this.numCell(row.id, 3) },
+      { key: 'chev', label: '', width: 28, render: (v, row) => React.createElement(N.Icon, { name: st.expanded === row.id ? 'chevron-down' : 'chevron-right', size: 12, color: 'var(--text-tertiary)' }) }
+    ];
+
+    const tie = this.tieouts();
+    const tieoutText = tie.fails.length
+      ? 'Tie-outs: ' + tie.pass + ' of ' + tie.total + ' pass — ' + tie.fails[0].label + ' differs by ' + this.fmt(tie.fails[0].a ? Math.abs(tie.fails[0].a[3] - tie.fails[0].b[3]) : null) + ' in LTM Jun-26'
+      : 'Tie-outs: ' + tie.pass + ' of ' + tie.total + ' pass · ' + mappedCount + ' of ' + mappable.length + ' target lines mapped · USD mm · source as of 16:04 ET';
+
+    const statusParts = [];
+    if (blockers.length) statusParts.push(blockers.length + ' required line' + (blockers.length > 1 ? 's' : '') + ' unmapped: ' + blockers.map((b) => this.targetOf(b).row.label).join(', '));
+    if (reviewIds.length) statusParts.push(reviewIds.length + ' line' + (reviewIds.length > 1 ? 's' : '') + ' need review');
+    if (st.edits) statusParts.push(st.edits + ' manual edit' + (st.edits > 1 ? 's' : ''));
+
+    return {
+      fileName: this.props.fileName || 'Northwind_FY25_Operating_Model.xlsx',
+      dense: this.props.dense !== false,
+      parseBadgeTone: template ? 'positive' : 'info',
+      parseBadgeIcon: template ? 'file-check' : 'sparkles',
+      parseBadgeText: template ? 'Template · Basis Standard v4' : 'LLM parse · generic model',
+      columns: columns, rows: rows, expanded: st.expanded,
+      onRowClick: (row) => { if (this.targetOf(row.id) && !this.targetOf(row.id).row.derived) this.setState({ expanded: st.expanded === row.id ? null : row.id }); },
+      renderDetail: (row) => this.detail(row),
+      tabs: [
+        { value: 'all', label: 'All', icon: 'layout-dashboard', count: counts.all },
+        { value: 'is', label: 'Income', count: counts.is },
+        { value: 'bs', label: 'Balance sheet', count: counts.bs },
+        { value: 'cf', label: 'Cash flow', count: counts.cf }
+      ],
+      tabsStyle: { overflow: 'hidden' },
+      tab: st.tab, setTab: (v) => this.setState({ tab: v }),
+      toolbarActions: React.createElement(React.Fragment, null,
+        React.createElement(N.Input, {
+          size: 'sm', iconLeft: 'search', placeholder: 'Find target or source line', value: st.search,
+          onChange: (e) => this.setState({ search: e.target.value }), style: { width: '220px', minWidth: '90px', flex: '0 1 auto' }
+        }),
+        React.createElement(N.Button, {
+          size: 'sm', iconLeft: 'filter', selected: st.onlyReview,
+          onClick: () => this.setState({ onlyReview: !st.onlyReview })
+        }, 'Needs review · ' + reviewIds.length),
+        React.createElement(N.Button, {
+          size: 'sm', iconLeft: 'rotate-ccw', disabled: !st.edits,
+          onClick: () => this.setState({ map: JSON.parse(JSON.stringify(this.original)), edits: 0, expanded: null })
+        }, 'Restore original')),
+      matchingNote: template
+        ? 'Import template “Basis Standard v4” detected in step 2 · strict positional mapping, no fuzzy or AI matching'
+        : 'No template detected in step 2 · matching ladder: exact name → alias dictionary → fuzzy score → AI fallback',
+      mappedText: mappedCount + ' / ' + mappable.length,
+      reviewText: String(reviewIds.length),
+      reviewTone: reviewIds.length ? 'caution' : 'positive',
+      reviewDrill: reviewIds.length ? () => this.setState({ onlyReview: true, tab: 'all' }) : null,
+      hasBlocker: blockers.length > 0 || reviewIds.length > 0,
+      blockerTitle: blockers.length
+        ? blockers.length + ' required line' + (blockers.length > 1 ? 's have' : ' has') + ' no source: ' + blockers.map((b) => this.targetOf(b).row.label).join(', ')
+        : reviewIds.length + ' match' + (reviewIds.length > 1 ? 'es are' : ' is') + ' below the 0.80 confidence threshold',
+      blockerAction: React.createElement(N.Button, { variant: 'link', size: 'sm', onClick: () => this.setState({ onlyReview: true, tab: 'all' }) }, 'Show only these'),
+      tieoutText: tieoutText,
+      statusText: statusParts.length ? statusParts.join(' · ') : 'All target lines mapped and above threshold. Ready to save ' + this.periods.length + ' periods.',
+      statusIcon: blockers.length ? 'alert-triangle' : reviewIds.length ? 'info' : 'check-circle',
+      statusColor: blockers.length ? 'var(--text-caution)' : reviewIds.length ? 'var(--text-secondary)' : 'var(--text-positive)',
+      saveDisabled: blockers.length > 0,
+      onSave: () => this.setState({ toastOpen: true }),
+      askCancel: () => this.setState({ cancelOpen: true }),
+      cancelOpen: st.cancelOpen,
+      closeCancel: () => this.setState({ cancelOpen: false }),
+      editCountText: mappedCount + ' line mappings' + (st.edits ? ' (' + st.edits + ' edited manually)' : ''),
+      cancelFooter: React.createElement(React.Fragment, null,
+        React.createElement(N.Button, { onClick: () => this.setState({ cancelOpen: false }) }, 'Keep editing'),
+        React.createElement(N.Button, { variant: 'danger', iconLeft: 'trash-2', onClick: () => this.setState({ cancelOpen: false }) }, 'Discard import')),
+      toastOpen: st.toastOpen,
+      toastTitle: 'Import saved',
+      toastBody: mappedCount + ' mapped lines · ' + this.periods.length + ' periods saved to Northwind Industrials',
+      toastAction: React.createElement(N.Button, { variant: 'link', size: 'sm', onClick: () => this.setState({ toastOpen: false }) }, 'Open model'),
+      closeToast: () => this.setState({ toastOpen: false })
+    };
+  }
+}
+</script>
+</body>
+</html>
